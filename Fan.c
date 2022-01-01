@@ -1,3 +1,11 @@
+/* 
+
+The actual executable files for FAN are in the alias folder.
+This folder gets compiled with GCC, on a Fedora Linux dual boot.
+Go wild!
+
+*/
+
 #define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
