@@ -19,5 +19,5 @@ export PATH=$PATH:$first
 " > ~/.bashrc
 
 echo Done.
-
-# echo 
+ 
+# Please do not modify this file, as it may damage your PATH system variable.
