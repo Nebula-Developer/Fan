@@ -8,7 +8,7 @@
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.1";
+char* ver = "v0.0.2";
 
 
 int main(int argc,char* argv[])
