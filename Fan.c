@@ -16,7 +16,7 @@ Go wild!
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.4"; 
+char* ver = "v0.0.5"; 
 
 
 int main(int argc,char* argv[])
@@ -71,7 +71,7 @@ int main(int argc,char* argv[])
 
         white();
         return 0;
-    } else if (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--do")) {
+    } else if (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--do") == 0) {
         if (argc < 3) {
             red();
             printf("Please supply an action argument. (Do 'fan -l' for a list of all actions.)\n");
