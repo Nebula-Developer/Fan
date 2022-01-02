@@ -16,7 +16,7 @@ Go wild!
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.3"; 
+char* ver = "v0.0.4"; 
 
 
 int main(int argc,char* argv[])
@@ -31,7 +31,7 @@ int main(int argc,char* argv[])
         return -1;
     }
 
-    if (strcmp(argv[1], "-h") == 0) {
+    if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
         cyan();
         printf("All supported arguments as of %s:\n",ver);
 
@@ -71,12 +71,59 @@ int main(int argc,char* argv[])
 
         white();
         return 0;
-    } else if (strcmp(argv[1], "-d") == 0) {
+    } else if (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--do")) {
         if (argc < 3) {
             red();
             printf("Please supply an action argument. (Do 'fan -l' for a list of all actions.)\n");
             white();
             return -1;
+        }
+
+        if (strcmp(argv[2], "opencmd") == 0) {
+            green();
+            printf("Opening CMD batch layout (Windows Only) on branch: 'NORMAL'..\n");
+            yellow();
+            printf("Opening batch file..\n");
+            cyan();
+            printf("Applying short timeout to stop file overlapse..\n");
+
+            usleep(100000);
+
+            yellow();
+            FILE *batch;
+            batch = fopen("cmd.bat", "w");
+
+            if (batch == NULL) {
+                red();
+                printf("\nFailed to open cmd.bat.\n");
+                white();
+                return -1;
+            }
+
+            purple();
+            printf("Successfully opened cmd.bat.\n");
+
+            yellow();
+            printf("Writing data to cmd.bat..\n");
+
+            usleep(200000);
+
+
+
+            fprintf(batch, "@echo off\necho OPENCMD: Made with FAN %c.\n:open\nset /p input='%%CD%%>'\n%%input%%\ngoto open\n", ver);
+            fclose(batch);
+
+            purple();
+            printf("Successfully appended text to cmd.bat.\n");
+
+            blue();
+
+            printf("Created batch layout successfully.\n");
+            printf("Closing file managers..\n");
+
+            usleep(500000);
+
+            white();
         }
 
         if (strcmp(argv[2], "html") == 0) {
@@ -98,7 +145,7 @@ int main(int argc,char* argv[])
                 red();
                 printf("\nFailed to open index.html.\n");
                 white();
-                exit(1);
+                return -1;
             }
 
             purple();
@@ -136,7 +183,7 @@ int main(int argc,char* argv[])
                 red();
                 printf("\nFailed to open style.css.\n");
                 white();
-                exit(1);
+                return -1;
             }
 
             purple();
@@ -145,8 +192,6 @@ int main(int argc,char* argv[])
 
 
             blue();
-
-            system("COLOR 5");
 
             printf("Created template project successfully.\n");
             printf("Closing file managers..\n");
@@ -157,7 +202,7 @@ int main(int argc,char* argv[])
 
             white();
         }
-    } else if (strcmp(argv[1], "-l") == 0) {
+    } else if (strcmp(argv[1], "-l") == 0 || strcmp(argv[1], "--list") == 0) {
         cyan();
         printf("All supported action arguments as of %s:\n",ver);
 
@@ -190,7 +235,7 @@ int main(int argc,char* argv[])
 
 
         white();
-    } else if (strcmp(argv[1], "-r") == 0) {
+    } else if (strcmp(argv[1], "-r") == 0 || strcmp(argv[1], "--reload") == 0) {
         yellow();
         printf("Reloading all actions...\n");
 

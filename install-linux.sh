@@ -6,7 +6,7 @@ out="${out}
 ${p}"
 done <  ~/.bashrc
 
-echo $out>linux-path-backup.txt
+echo "BACKUP:${out}\n\n">>linux-path-backup.txt
 
 first="${PWD}/alias"
 second="\\ "
