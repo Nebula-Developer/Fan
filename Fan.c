@@ -16,7 +16,7 @@ Go wild!
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.5";  
+char* ver = "v0.0.6";  
 
 
 int main(int argc,char* argv[])
@@ -126,6 +126,30 @@ int main(int argc,char* argv[])
             white();
         }
 
+        if (strcmp(argv[2], "make") == 0) {
+            if(argc < 4) {
+                red();
+                printf("Please supply a third argument (FILE_NAME).\n");
+                white();
+                return -1;
+            }
+
+            green();
+            printf("Creating file: '%s'...", argv[3]);
+
+            FILE *custom;
+            custom = fopen(argv[3], "w");
+            fclose(custom);
+        }
+
+        if (strcmp(argv[2], "package") == 0) {
+            red();
+            printf("Please try again later. ");
+            purple();
+            printf("(Not implemented yet.)\n");
+            white();
+        }
+
         if (strcmp(argv[2], "html") == 0) {
             green();
             printf("Creating html template project on branch: 'NORMAL'..\n");
@@ -208,12 +232,16 @@ int main(int argc,char* argv[])
 
         char* helpArray[] = 
         {
-            "html"
+            "html",
+            "opencmd",
+            "package"
         };
 
         char* resultOfCommand[] =
         {
-            "creates an html template in the current open directory"
+            "creates an html template in the current open directory",
+            "creates a batch file with a template CMD command runner",
+            "this is not implemented yet. Please wait for it's release on the github page"
         };
 
         int length = 0;
