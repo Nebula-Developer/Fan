@@ -1,0 +1,13 @@
+BACKUP:
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin\n\n
+BACKUP:
+
+/usr/local/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin\n\n

@@ -1,4 +1,5 @@
 echo "Installing FAN onto your PATH... (Make sure your system uses ~/.bashrc, otherwise edit this script.)"
+echo "(Please make sure you run this as SUDO / ROOT.)"
 
 while read p
 do 
@@ -7,7 +8,7 @@ ${p}"
 done <  ~/.bashrc
 
 echo "BACKUP:${out}\n\n">>linux-path-backup.txt
-
+ 
 first="${PWD}/alias"
 second="\\ "
 first=${first/ /$second}
