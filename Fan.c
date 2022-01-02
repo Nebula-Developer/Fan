@@ -16,7 +16,7 @@ Go wild!
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.6";  
+char* ver = "v0.0.7";  
 
 
 int main(int argc,char* argv[])
