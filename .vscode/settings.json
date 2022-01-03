@@ -5,6 +5,8 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "time.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "stb-image.h": "c",
+        "graphics.h": "c"
     }
 }
