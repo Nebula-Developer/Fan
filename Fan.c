@@ -16,7 +16,7 @@ Go wild!
 #include <errno.h>
 #include <sys/time.h>
 
-char* ver = "v0.0.7";  
+char* ver = "v0.0.8";  
 
 
 int main(int argc,char* argv[])
@@ -79,6 +79,36 @@ int main(int argc,char* argv[])
             return -1;
         }
 
+        if (strcmp(argv[2], "graph") == 0) {
+            if (argc < 5) {
+                red();
+                printf("Please supply two integers.\n");
+                white();
+                return -1;
+            }
+
+            int longest = 0;
+            int shortest = 0;
+
+            if (strlen(argv[3]) > strlen(argv[4])) {
+                longest = strlen(argv[3]);
+                shortest = strlen(argv[4]);
+            } else {
+                longest = strlen(argv[4]);
+                shortest = strlen(argv[3]);
+            }
+
+            for(int i = 0; i < longest; i++) {
+                printf("-");
+            }
+            printf(">\n");
+            for(int i = 0; i < shortest; i++) {
+                printf("-");
+            }
+            int comparison = longest - shortest;
+            printf("<%i \n",comparison);
+        }
+
         if (strcmp(argv[2], "opencmd") == 0) {
             green();
             printf("Opening CMD batch layout (Windows Only) on branch: 'NORMAL'..\n");
@@ -110,7 +140,7 @@ int main(int argc,char* argv[])
 
 
 
-            fprintf(batch, "@echo off\necho OPENCMD: Made with FAN %c.\n:open\nset /p input='%%CD%%>'\n%%input%%\ngoto open\n", ver);
+            fprintf(batch, "@echo off\necho OPENCMD: Made with FAN %s.\n\n:open\nset /p input=\"%%CD%%>\"\n%%input%%\ngoto open\n", ver);
             fclose(batch);
 
             purple();
@@ -181,13 +211,11 @@ int main(int argc,char* argv[])
             usleep(200000);
 
 
-            fprintf(index, "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=<device-width>, initial-scale=1.0\">\n    <title>Template Project</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <p>This is a template project made by FAN.</p>\n</body>\n</html>");
+            fprintf(index, "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Template Project</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <p>This is a template project made by FAN.</p>\n</body>\n</html>");
             fclose(index);
 
             purple();
             printf("Successfully appended text to index.html.\n");
-
-
 
 
 
